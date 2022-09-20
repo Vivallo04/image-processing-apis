@@ -1,4 +1,4 @@
-# Install script for directory: /home/josev/CLionProjects/proyectoprueba
+# Install script for directory: /home/josev/CLionProjects/features-jvargas-imageAPI
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -50,5 +50,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/josev/CLionProjects/proyectoprueba/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/josev/CLionProjects/features-jvargas-imageAPI/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

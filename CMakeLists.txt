@@ -7,6 +7,6 @@ include_directories(${OpenCV_INCLUDE_DIRS})
 
 
 
-add_executable(proyectoprueba filters.cpp)
+add_executable(proyectoprueba filtersAPIS.cpp)
 
 target_link_libraries(proyectoprueba ${OpenCV_LIBS})

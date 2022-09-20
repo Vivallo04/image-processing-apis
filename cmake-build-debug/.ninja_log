@@ -1,0 +1,9 @@
+# ninja log v5
+1	2155	1663480711854089985	CMakeFiles/proyectoprueba.dir/Chapter1.cpp.o	815ee611a749ece3
+0	47	1663636274399179753	build.ninja	29594bf3c6158f17
+483	610	1663635209577600718	Server/Server	85cb0e3af190fe06
+0	466	1663635209433590523	Server/CMakeFiles/Server.dir/main.cpp.o	d47bf177c6a6cbe2
+2155	2624	1663480712318091697	proyectoprueba	2b7c50b344495267
+1	483	1663635209449591656	Server/CMakeFiles/Server.dir/Server.cpp.o	f622ce79794f7527
+0	425	1663635217862188851	client/CMakeFiles/client.dir/main.cpp.o	e573350361aeea14
+2	361	1663459430599459361	CMakeFiles/proyectoprueba.dir/Chapter2.cpp.o	39deaf7e13376a95

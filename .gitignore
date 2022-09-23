@@ -33,3 +33,8 @@
 
 #  CMake
 cmake-build-debug
+/.idea/vcs.xml
+
+# IDE
+/.fleet
+/.idea

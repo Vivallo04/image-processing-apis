@@ -1,3 +1,0 @@
-/home/josev/CLionProjects/features-jvargas-imageAPI/cmake-build-debug/CMakeFiles/proyectoprueba.dir
-/home/josev/CLionProjects/features-jvargas-imageAPI/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/josev/CLionProjects/features-jvargas-imageAPI/cmake-build-debug/CMakeFiles/rebuild_cache.dir

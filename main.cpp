@@ -3,13 +3,10 @@
 #include <opencv2/imgcodecs.hpp>
 #include <opencv2/highgui.hpp>
 #include <opencv2/core/cuda.hpp>
-#include "opencv2/imgproc.hpp"
-#include <opencv2/opencv.hpp>
 
 
 int import_image()
 {
-
     std::string const image_path = "/home/vivallo/Development/Datos II/OpenCVPOC/assets/mai.png";
     cv::Mat img = cv::imread(image_path);
     if(img.empty())
@@ -24,6 +21,6 @@ int import_image()
 int main()
 {
     std::cout << "Hello, World!" << std::endl;
-    import_image();
+    import_image(); 
     return 0;
 }

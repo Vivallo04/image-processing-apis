@@ -11,7 +11,7 @@ int import_image()
     cv::Mat img = cv::imread(image_path);
     if(img.empty())
     {
-        std::cout<<"COULD NOT READ IMAGE"<<std::endl;
+        std::cout << "COULD NOT READ IMAGE" << std::endl;
         return 1;
     }
     imshow("Processed Image", img);

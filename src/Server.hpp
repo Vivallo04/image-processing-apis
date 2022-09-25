@@ -1,3 +1,5 @@
+#include <boost/asio.hpp>
+
 #ifndef OPENCV_SERVER_HPP
 #define OPENCV_SERVER_HPP
 
@@ -5,7 +7,7 @@
 class Server
 {
 public:
-    Server(int port);
+    explicit Server(int port);
 
 private:
     int port = 8080;

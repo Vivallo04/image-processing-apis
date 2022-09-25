@@ -6,6 +6,7 @@
 #include "opencv2/imgproc.hpp"
 #include "ImageController.hpp"
 
+
 namespace
 {
     std::string const image_path = "/home/josev/CLionProjects/proyectoprueba/Resources/jose.jpg";
@@ -14,6 +15,8 @@ namespace
 
 cv::Mat ImageController::GaussianBlur_Filter(const cv::Mat &img_orig, cv::Mat img_new, int width, int height)
 {
+    if (width % 2 == 0) width++;
+    if (height % 2 == 0) height++;
     GaussianBlur(img_orig,img_new, cv::Size(width, height),0);
 }
 

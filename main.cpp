@@ -12,7 +12,7 @@ int import_image()
     if(img.empty())
     {
         std::cout << "COULD NOT READ IMAGE" << std::endl;
-        return 1;
+        return -1;
     }
     imshow("Processed Image", img);
     cv::waitKey(0);

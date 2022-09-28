@@ -8,16 +8,19 @@ set(CMAKE_CXX_STANDARD 20)
 find_package(OpenCV REQUIRED)
 include_directories(${OpenCV_INCLUDE_DIRS})
 
-include(FetchContent)
-FetchContent_Declare(
-        googletest
-        GIT_REPOSITORY https://github.com/google/googletest.git
-        GIT_TAG release-1.12.1
-)
-set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
-FetchContent_MakeAvailable(googletest)
+set(CMAKE_CXX_FLAGS "-fprofile-arcs -ftest-coverage")
+
+enable_testing()
+
+add_subdirectory(lib/googletest)
+include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
+include_directories(${gmock_SOURCE_DIR}/include ${gmock_SOURCE_DIR})
 
 
-add_executable(OpenCV main.cpp src/Server.cpp src/Server.hpp src/controllers/ImageController.cpp src/controllers/ImageController.hpp test/ImageControllerTest.cpp test/main.cpp)
 
-target_link_libraries(OpenCV ${OpenCV_LIBS})
+add_executable(OpenCV src/Server.cpp src/Server.hpp src/controllers/ImageController.cpp src/controllers/ImageController.hpp test/ImageControllerTest.cpp test/main.cpp)
+
+target_link_libraries(OpenCV ${OpenCV_LIBS}
+        gtest
+        gtest_main
+        gmock_main)

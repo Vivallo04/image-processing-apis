@@ -42,3 +42,6 @@ cmake-build-debug
 # Client Misc
 Client/.idea
 Client/cmake-build-debug
+
+# Libraries
+lib

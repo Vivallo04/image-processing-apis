@@ -38,3 +38,7 @@ cmake-build-debug
 # IDE
 /.fleet
 /.idea
+
+# Client Misc
+Client/.idea
+Client/cmake-build-debug

@@ -88,7 +88,7 @@ int ImageController::GammaCorrection_Filter(const cv::Mat &img_orig, cv::Mat &im
                 break;
             }
             default:
-                break;
+                return -1;
         }
     }
 

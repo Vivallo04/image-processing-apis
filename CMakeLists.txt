@@ -17,6 +17,7 @@ FetchContent_Declare(
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
-add_executable(OpenCV main.cpp src/Server.cpp src/Server.hpp src/controllers/ImageController.cpp src/controllers/ImageController.hpp)
+
+add_executable(OpenCV main.cpp src/Server.cpp src/Server.hpp src/controllers/ImageController.cpp src/controllers/ImageController.hpp test/ImageControllerTest.cpp test/main.cpp)
 
 target_link_libraries(OpenCV ${OpenCV_LIBS})

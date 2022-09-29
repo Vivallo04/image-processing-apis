@@ -3,6 +3,7 @@
 #include <opencv2/imgcodecs.hpp>
 #include <opencv2/highgui.hpp>
 #include <opencv2/core/cuda.hpp>
+#include "src/Server.hpp"
 
 
 int import_image()
@@ -14,13 +15,12 @@ int import_image()
         std::cout << "COULD NOT READ IMAGE" << std::endl;
         return 1;
     }
-    imshow("Processed Image", img);
-    cv::waitKey(0);
 }
 
 int main()
 {
     std::cout << "Hello, World!" << std::endl;
-    import_image(); 
+    auto* server = new Server;
+    //import_image();
     return 0;
 }

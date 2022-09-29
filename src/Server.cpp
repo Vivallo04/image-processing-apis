@@ -2,7 +2,7 @@
 #include "Server.hpp"
 #include <boost/asio.hpp>
 
-Server::Server(int port)
+Server::Server()
 {
     boost::asio::io_service io_service;
     boost::asio::ip::tcp::acceptor acceptor_(io_service, boost::asio::ip::tcp::endpoint(boost::asio::ip::tcp::v4(), this -> PORT));
@@ -34,3 +34,4 @@ std::string Server::SendMessage(boost::asio::ip::tcp::socket &socket, const std:
     const std::string msg = message + "\n";
     boost::asio::write( socket, boost::asio::buffer(message));
 }
+

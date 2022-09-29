@@ -1,21 +1,36 @@
+#include <iostream>
 #include "Server.hpp"
+#include <boost/asio.hpp>
 
 Server::Server(int port)
 {
-    boost::asio::io_service io_service; // Servicio de input/output
-    boost::asio::ip::tcp::acceptor acceptor_(io_service, boost::asio::ip::tcp::endpoint(boost::asio::ip::tcp::v4(), 1234));
-    // Acepta de manera asincrona conexiones en puerto 1234
-    boost::asio::ip::tcp::socket socket_(io_service); // Declaracion de socket para conexiones
+    boost::asio::io_service io_service;
+    boost::asio::ip::tcp::acceptor acceptor_(io_service, boost::asio::ip::tcp::endpoint(boost::asio::ip::tcp::v4(), this -> PORT));
+    boost::asio::ip::tcp::socket socket_(io_service);
 
-    cout << "Servidor iniciado" << endl;
+    std::cout << "Server is initialized" << std::endl;
 
-    acceptor_.accept(socket_); // Acepta al socket del cliente que pida conectarse
+    acceptor_.accept(socket_);
 
-    cout << "Cliente conectado" << endl;
+    std::cout << "Client connected" << std::endl;
 
-    string message = ReadMessage(socket_); // Lee y declara mensaje del cliente
-    cout << "Cliente dice: " + message << endl;
+    std::string message = ReadMessage(socket_);
+    std::cout << "Client says: " + message << std::endl;
 
-    SendMessage(socket_, "Hola, soy el servidor"); // Envia mensaje al cliente
-    cout << "Mensaje enviado" << endl;
+    SendMessage(socket_, "Hola, soy el servidor");
+    std::cout << "Mensaje enviado" << std::endl;
+}
+
+std::string Server::ReadMessage(boost::asio::ip::tcp::socket &socket)
+{
+    boost::asio::streambuf streamBuff;
+    boost::asio::read_until(socket, streamBuff, "\n");
+    std::string data = boost::asio::buffer_cast<const char *>(streamBuff.data());
+    return data;
+}
+
+std::string Server::SendMessage(boost::asio::ip::tcp::socket &socket, const std::string &message)
+{
+    const std::string msg = message + "\n";
+    boost::asio::write( socket, boost::asio::buffer(message));
 }

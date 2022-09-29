@@ -27,7 +27,7 @@ if(OpenCV_FOUND)
     message(STATUS "OpenCV found and configured")
 endif()
 
-add_executable(image_processing_apis main.cpp src/Server.cpp src/Server.hpp src/controllers/ImageController.cpp src/controllers/ImageController.hpp)
+add_executable(image_processing_apis main.cpp src/Server.cpp src/Server.hpp src/controllers/ImageController.cpp src/controllers/ImageController.hpp src/dtos/ImageDto.cpp src/dtos/ImageDto.hpp src/handlers/ImageHandler.cpp src/handlers/ImageHandler.hpp src/utils/Utils.cpp)
 
 target_link_libraries(image_processing_apis
         ${OpenCV_LIBS}

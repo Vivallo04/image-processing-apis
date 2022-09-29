@@ -1,0 +1,15 @@
+//
+// Created by vivallo on 29/09/22.
+//
+
+#ifndef IMAGE_PROCESSING_APIS_IMAGEDTO_HPP
+#define IMAGE_PROCESSING_APIS_IMAGEDTO_HPP
+
+
+class ImageDTO
+{
+
+};
+
+
+#endif //IMAGE_PROCESSING_APIS_IMAGEDTO_HPP

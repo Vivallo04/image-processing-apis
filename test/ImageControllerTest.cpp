@@ -3,19 +3,15 @@
 #include <opencv2/core.hpp>
 #include <opencv2/imgcodecs.hpp>
 #include <opencv2/core/cuda.hpp>
-#include "../src/controllers/ImageController.hpp"
+
 
 #include "gtest/gtest.h"
-#include <iostream>
 
-#include <opencv2/core.hpp>
-#include <opencv2/imgcodecs.hpp>
-#include <opencv2/core/cuda.hpp>
 #include "opencv2/imgproc.hpp"
 //#include "controllers/ImageController.hpp"
 
 
-#include "gtest/gtest.h"
+
 
 int GaussianBlur_Filter(const cv::Mat &img_orig, cv::Mat &img_new, int width, int height)
 {
@@ -33,7 +29,7 @@ int GaussianBlur_Filter(const cv::Mat &img_orig, cv::Mat &img_new, int width, in
 
 int GrayScale_Filter(const cv::Mat &img_orig, cv::Mat &img_new, int width, int height) {
     cv::Mat img_sizer;
-    cv::Mat();
+
     if(img_orig.empty())
     {
         std::cout << "COULD NOT READ IMAGE" << std::endl;
@@ -44,7 +40,7 @@ int GrayScale_Filter(const cv::Mat &img_orig, cv::Mat &img_new, int width, int h
     return 0;
 }
 
-int BrightnessControl_Filter(const cv::Mat &img_orig, cv::Mat &img_new, int delta_bright, int width,
+int BrightnessControlFilter(const cv::Mat &img_orig, cv::Mat &img_new, int delta_bright, int width,
                              int height) {
     cv::Mat img_sizer;
     if(img_orig.empty())
@@ -57,7 +53,7 @@ int BrightnessControl_Filter(const cv::Mat &img_orig, cv::Mat &img_new, int delt
     return 0;
 }
 
-int GammaCorrection_Filter(const cv::Mat &img_orig, cv::Mat &img_new, int gamma_cor, int width,int height) {
+int GammaCorrectionFilter(const cv::Mat &img_orig, cv::Mat &img_new, int gamma_cor, int width,int height) {
     {
         cv::Mat img_sizer;
         unsigned char lut[256];
@@ -103,14 +99,13 @@ imageController.GaussianBlur_Filter(img,img_new,300,300);
 imageController.GammaCorrection_Filter(img,img_new,2.34,300,300);
 imageController.BrightnessControl_Filter(img,img_new,50,300,300);
 */
-
 //Assert
 
 
 TEST(GrayScale_FilterTest, Handlesemptyimage) {
     //Act
 
-    std::string const image_path = "../assets/naruto.png";
+    std::string const image_path = "/home/josev/CLionProjects/image-processing-apis/assets/naruto.png";
     cv::Mat img = cv::imread(image_path);
     cv::Mat img_error;
     cv::Mat img_new;
@@ -122,11 +117,12 @@ TEST(GrayScale_FilterTest, Handlesemptyimage) {
     EXPECT_EQ(GrayScale_Filter(img,img_new,300,300),0);
 }
 
+
 TEST(GaussianBlur_FilterTest, Handlesemptyimage) {
     //Act
 
-    std::string const image_path = "../assets/naruto.png";
-    cv::Mat img = cv::imread(image_path);
+    std::string const image_path1 = "/home/josev/CLionProjects/image-processing-apis/assets/mai.png";
+    cv::Mat img = cv::imread(image_path1);
     cv::Mat img_error;
     cv::Mat img_new;
 
@@ -139,35 +135,30 @@ TEST(GaussianBlur_FilterTest, Handlesemptyimage) {
 TEST(GammaCorrection_FilterTest, Handlesemptyimage) {
     //Act
 
-    std::string const image_path = "../assets/naruto.png";
-    cv::Mat img = cv::imread(image_path);
+    std::string const image_path2 = "/home/josev/CLionProjects/image-processing-apis/assets/naruto.png";
+    cv::Mat img = cv::imread(image_path2);
     cv::Mat img_error;
     cv::Mat img_new;
 
     //Arrange
-    auto actor=GammaCorrection_Filter(img,img_new,2.54,300,300);
+    auto actor=GammaCorrectionFilter(img,img_new,2.54,300,300);
 
-    EXPECT_EQ(actor,-1);
+    EXPECT_EQ(actor,0);
 
 }
 
 TEST(BrightnessControl_FilterTest, Handlesemptyimage) {
     //Act
 
-    std::string const image_path = "../assets/naruto.png";
-    cv::Mat img = cv::imread(image_path);
+    std::string const image_path3 = "/home/josev/CLionProjects/image-processing-apis/assets/naruto.png";
+    cv::Mat img = cv::imread(image_path3);
     cv::Mat img_error;
     cv::Mat img_new;
 
     //Arrange
-    auto actor=BrightnessControl_Filter(img,img_new,50,300,300);
+    auto actor=BrightnessControlFilter(img,img_new,50,300,300);
 
     EXPECT_EQ(actor, 0);
 }
 
-TEST(Suma, sumatest)
-{
-    int a = 3;
-    int b = 3;
-    EXPECT_EQ(a+b, 6);
-}
+

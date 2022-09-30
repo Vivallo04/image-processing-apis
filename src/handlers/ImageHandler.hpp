@@ -1,19 +1,23 @@
-
-
-#ifndef IMAGE_PROCESSING_APIS_IMAGEHANDLER_HPP
-#define IMAGE_PROCESSING_APIS_IMAGEHANDLER_HPP
-
-
-#endif //IMAGE_PROCESSING_APIS_IMAGEHANDLER_HPP
 #include <iostream>
 #include <opencv2/core.hpp>
 #include <opencv2/imgcodecs.hpp>
 #include <opencv2/core/cuda.hpp>
 #include "opencv2/imgproc.hpp"
 
-class ImageHandler{
+#ifndef IMAGE_PROCESSING_APIS_IMAGEHANDLER_HPP
+#define IMAGE_PROCESSING_APIS_IMAGEHANDLER_HPP
 
+
+class ImageHandler
+{
 public:
+    std::string path;
+    std::string filter;
+    cv::Mat img;
+    ImageHandler(auto path, auto filter);
+
+
+    void ProcessImage(int filter);
     ImageHandler(std::string imgPATH);
 
     // imgSize --> size of bits of the image
@@ -49,3 +53,6 @@ public:
     int makeimage_again();
 
 };
+
+
+#endif //IMAGE_PROCESSING_APIS_IMAGEHANDLER_HPP

@@ -8,8 +8,8 @@ class Server
 {
 public:
     Server();
-    static std::string SendMessage(boost::asio::ip::tcp::socket &socket, const std::string &message);
-    static std::string ReadMessage(boost::asio::ip::tcp::socket &socket);
+    std::string SendMessage(boost::asio::ip::tcp::socket &socket, const std::string &message);
+    std::string ReadMessage(boost::asio::ip::tcp::socket &socket);
 
 private:
     const int PORT = 9080;

@@ -1,9 +1,11 @@
 #include <iostream>
+#include "src/Server.hpp"
+
+#include <boost/log/trivial.hpp>
 #include <opencv2/core.hpp>
 #include <opencv2/imgcodecs.hpp>
-#include <opencv2/highgui.hpp>
 #include <opencv2/core/cuda.hpp>
-#include "src/Server.hpp"
+
 
 
 int import_image()
@@ -17,10 +19,13 @@ int import_image()
     }
 }
 
+/*
+
 int main()
 {
-    std::cout << "Hello, World!" << std::endl;
-    auto* server = new Server;
-    //import_image();
+    BOOST_LOG_TRIVIAL(info) << "Image Processing API Started";
+    auto* server = new Server();
+    int const PORT = 9080;
     return 0;
 }
+*/

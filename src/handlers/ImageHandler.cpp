@@ -1,15 +1,46 @@
 #include "ImageHandler.hpp"
-#include <iostream>
 #include <opencv2/core.hpp>
 #include <opencv2/imgcodecs.hpp>
-#include <opencv2/core/cuda.hpp>
-#include "opencv2/imgproc.hpp"
+
+#include "../controllers/ImageController.hpp"
+#include <iostream>
 #include <opencv2/opencv.hpp>
 using namespace std;
 using namespace cv;
 
+ImageHandler::ImageHandler(auto path, auto filter)
+{
+    this -> path = path;
+    this -> filter = filter;
+    this -> img = cv::imread(this -> path);
+}
 
-ImageHandler::ImageHandler(std::string imgPATH) {
+
+void ImageHandler::ProcessImage(int filter)
+{
+    cv::Mat img_out;
+    switch (filter)
+    {
+        case 1:
+            ImageController::GaussianBlurFilter(this -> img, img_out, 200, 200);
+            break;
+        case 2:
+            ImageController::GrayScaleFilter(this -> img, img_out, 200, 200);
+            break;
+        case 3:
+            ImageController::BrightnessControlFilter(this -> img, img_out, 10, 200, 200);
+            break;
+        case 4:
+            ImageController::GammaCorrectionFilter(this -> img, img_out, 2,200, 200);
+            break;
+        default:
+            break;
+    }
+}
+
+
+ImageHandler::ImageHandler(std::string imgPATH)
+{
 
     //Declare constant variables that are going to be used
     //forever during the program
@@ -34,7 +65,8 @@ ImageHandler::ImageHandler(std::string imgPATH) {
     define_datavariables();
 }
 
-int ImageHandler::define_datavariables(){
+int ImageHandler::define_datavariables()
+{
 
         //Now we have to divide the image depending on the
         //size of the Boxes
@@ -89,13 +121,6 @@ int ImageHandler::makeimage_again() {
     }
     return 0;
 }
-
-
-
-
-
-
-
 
 int ImageHandler::fragment_image() {
     int xpos = 0, ypos = 0, bsizewidth, bsizeheight;

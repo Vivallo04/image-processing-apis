@@ -1,17 +1,9 @@
 #include <iostream>
 
 #include <opencv2/core.hpp>
-#include <opencv2/imgcodecs.hpp>
 #include <opencv2/core/cuda.hpp>
 #include "opencv2/imgproc.hpp"
 #include "ImageController.hpp"
-
-
-namespace
-{
-    std::string const image_path = "/home/josev/CLionProjects/proyectoprueba/Resources/jose.jpg";
-    cv::Mat img = cv::imread(image_path);
-}
 
 
 int ImageController::GaussianBlurFilter(const cv::Mat &img_orig, cv::Mat &img_new, int width, int height)
@@ -95,4 +87,15 @@ int ImageController::GammaCorrectionFilter(const cv::Mat &img_orig, cv::Mat &img
         default:
             return -1;
     }
+}
+
+int main()
+{
+    std::string const image_path = "/home/vivallo/Development/Datos II/OpenCVPOC/assets/mai.png";
+    cv::Mat img = cv::imread(image_path);
+    cv::Mat img_out;
+
+    ImageController::GaussianBlurFilter(img, img_out, 200, 200);
+    imshow("Processed Image", img_out);
+    cv::waitKey(0);
 }

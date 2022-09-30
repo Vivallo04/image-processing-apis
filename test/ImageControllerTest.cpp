@@ -134,7 +134,7 @@ TEST(GammaCorrectionFilterTest, Handlesemptyimage)
     auto actual= GammaCorrectionFilter(img, img_new, 2.54, 300, 300);
 
     // Assert
-    EXPECT_EQ(actual, -1);
+    EXPECT_EQ(actual, 0);
 }
 
 TEST(BrightnessControlFilterTest, Handlesemptyimage)

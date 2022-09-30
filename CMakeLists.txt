@@ -16,8 +16,8 @@ if(OpenCV_FOUND)
     message(STATUS "OpenCV found and configured")
 endif()
 
-# Boost
-find_package(Boost REQUIRED)
+# Boost Asio
+find_package(Boost COMPONENTS log REQUIRED)
 if (Boost_FOUND)
     set(ASIO_FOUND "YES")
     include_directories(${Boost_INCLUDE_DIR})
@@ -26,6 +26,8 @@ if (Boost_FOUND)
     message(STATUS "Directory" ${Boost_INCLUDE_DIR})
 endif()
 
+# Boost Log
+ADD_DEFINITIONS(-DBOOST_LOG_DYN_LINK)
 
 add_executable(image_processing_apis main.cpp src/Server.cpp src/Server.hpp src/controllers/ImageController.cpp
         src/controllers/ImageController.hpp src/dtos/ImageDto.cpp src/dtos/ImageDto.hpp
@@ -35,4 +37,5 @@ target_link_libraries(image_processing_apis
         ${OpenCV_LIBS}
         ${Boost_INCLUDE}
         Boost::boost
+        Boost::log
         )

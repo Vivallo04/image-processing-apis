@@ -43,5 +43,8 @@ cmake-build-debug
 Client/.idea
 Client/cmake-build-debug
 
-# Libraries
-lib
+# Tests
+/test/lib/
+/test/.idea
+/test/cmake-build-debug
+/test/src

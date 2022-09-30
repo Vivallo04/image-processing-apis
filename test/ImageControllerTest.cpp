@@ -1,6 +1,11 @@
-//
-// Created by josev on 27/09/22.
-//
+#include <iostream>
+
+#include <opencv2/core.hpp>
+#include <opencv2/imgcodecs.hpp>
+#include <opencv2/core/cuda.hpp>
+#include "../src/controllers/ImageController.hpp"
+
+#include "gtest/gtest.h"
 #include <iostream>
 
 #include <opencv2/core.hpp>
@@ -40,7 +45,7 @@ int GrayScale_Filter(const cv::Mat &img_orig, cv::Mat &img_new, int width, int h
 }
 
 int BrightnessControl_Filter(const cv::Mat &img_orig, cv::Mat &img_new, int delta_bright, int width,
-                                              int height) {
+                             int height) {
     cv::Mat img_sizer;
     if(img_orig.empty())
     {
@@ -157,12 +162,12 @@ TEST(BrightnessControl_FilterTest, Handlesemptyimage) {
     //Arrange
     auto actor=BrightnessControl_Filter(img,img_new,50,300,300);
 
-    EXPECT_EQ(actor,0);
+    EXPECT_EQ(actor, 0);
 }
 
-TEST(Suma, sumatest) {
+TEST(Suma, sumatest)
+{
     int a = 3;
     int b = 3;
-    EXPECT_EQ(a+b,7);
-
+    EXPECT_EQ(a+b, 6);
 }

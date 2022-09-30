@@ -18,7 +18,7 @@ include_directories(${gmock_SOURCE_DIR}/include ${gmock_SOURCE_DIR})
 
 
 
-add_executable(OpenCV src/Server.cpp src/Server.hpp src/controllers/ImageController.cpp src/controllers/ImageController.hpp test/ImageControllerTest.cpp test/main.cpp)
+add_executable(OpenCV test/ImageControllerTest.cpp test/main.cpp)
 
 target_link_libraries(OpenCV ${OpenCV_LIBS}
         gtest

@@ -1,18 +1,17 @@
 #include <iostream>
-
+#include "opencv2/opencv.hpp"
 #include <opencv2/core.hpp>
-#include <opencv2/imgcodecs.hpp>
 #include <opencv2/core/cuda.hpp>
 #include "opencv2/imgproc.hpp"
 #include "ImageController.hpp"
 
+namespace {
 
-namespace
-{
-    std::string const image_path = "/home/josev/CLionProjects/proyectoprueba/Resources/jose.jpg";
+    std::string image_path = "/home/josev/CLionProjects/image-processing-apis/assets/jose.jpg";
     cv::Mat img = cv::imread(image_path);
+    cv::Mat *img_ptr = &img;
+    cv::Mat * img_new;
 }
-
 
 int ImageController::GaussianBlurFilter(const cv::Mat &img_orig, cv::Mat &img_new, int width, int height)
 {
@@ -46,6 +45,8 @@ int ImageController::GrayScaleFilter(const cv::Mat &img_orig, cv::Mat &img_new, 
 int ImageController::BrightnessControlFilter(const cv::Mat &img_orig, cv::Mat &img_new, int delta_bright,
                                              int width, int height)
  {
+
+
     cv::Mat img_sizer;
     if(img_orig.empty())
     {
@@ -59,6 +60,7 @@ int ImageController::BrightnessControlFilter(const cv::Mat &img_orig, cv::Mat &i
 
 int ImageController::GammaCorrectionFilter(const cv::Mat &img_orig, cv::Mat &img_new, int gamma_cor, int width,int height)
 {
+
     cv::Mat img_sizer;
     unsigned char lut[256];
     for (int i = 0; i < 256; i++)
@@ -77,6 +79,7 @@ int ImageController::GammaCorrectionFilter(const cv::Mat &img_orig, cv::Mat &img
             {
                 *it = lut[(*it)];
             }
+
             cv::resize(img_sizer,img_new, cv::Size(width,height),cv::INTER_LINEAR);
             return 0;
         }

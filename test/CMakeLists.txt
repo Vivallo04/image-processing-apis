@@ -18,7 +18,7 @@ include_directories(${gmock_SOURCE_DIR}/include ${gmock_SOURCE_DIR})
 add_executable(image_processing_test main.cpp ImageControllerTest.cpp
         .././src/controllers/ImageController.hpp
         .././src/controllers/ImageController.cpp
-        .././src/)
+        mocks/MockImageController.cpp mocks/MockClient.cpp mocks/MockClient.hpp)
 
 target_link_libraries(image_processing_test
         ${OpenCV_LIBS}
